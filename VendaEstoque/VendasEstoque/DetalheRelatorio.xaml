@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="VendasEstoque.DetalheRelatorio">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="ORDEM DE COMPRA " FontSize="22" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                <Label x:Name="lblData" Text=""/>
+            </StackLayout>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label x:Name="lblProdNome" Text="Produto: "/>
+                <Label x:Name="lblRSUnita" Text="Valor unitário: "/>
+                <Label x:Name="lblQtde" Text="Quantidade: "/>
+                <Label x:Name="lblCliNome" Text="Cliente: "/>
+                <Label x:Name="lblRSTot" Text="Total: R$"/>
+                <Label x:Name="lblFormaPgto" Text="Forma de Pagamento: "/>
+                <Label x:Name="lblObs" Text="Observações: "/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

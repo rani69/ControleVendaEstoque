@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="VendasEstoque.DetalhaCliente">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Nome do Cliente" FontSize="Medium"/>
+            <Entry Placeholder="{Binding Cli_Nome}" BackgroundColor="LightGray"/>
+            <Label Text="Endereço" FontSize="Medium"/>
+            <Entry Placeholder="{Binding Cli_Endereco}" BackgroundColor="LightGray"/>
+            <Label Text="Telefone" FontSize="Medium"/>
+            <Entry Placeholder="{Binding Cli_Telefone}" BackgroundColor="LightGray"/>
+            <Label Text="Celular" FontSize="Medium"/>
+            <Entry Placeholder="{Binding Cli_Celular}" BackgroundColor="LightGray"/>
+            <Label Text="Observações" FontSize="Medium"/>
+            <Editor HeightRequest="100" Placeholder="{Binding Cli_Obs}"/>
+            <Button Text="Voltar" x:Name="btnVoltar2" Clicked="BtnVoltar_Clicked2" BackgroundColor="#32CD32" HorizontalOptions="FillAndExpand"/>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

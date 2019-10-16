@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Controle de Estoque e Vendas v1.0"
+             x:Class="VendasEstoque.Sobre">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label HorizontalOptions="Center" Text="Desenvolvido por José Newton Filho e Ranielly Pereira" FontSize="20" FontAttributes="Italic"/>
+            <Label Text="Contatos:" FontSize="18" FontAttributes="Bold"/>
+            <StackLayout Orientation="Horizontal"/>
+            <Label Text="José Newton Filho: jnewton.fff@gmail.com" FontSize="18" HorizontalOptions="Center" FontAttributes="Bold"/>
+            <Label Text="Ranielly Pereira: ranielly_pereira@hotmail.com" FontSize="18" HorizontalOptions="Center" FontAttributes="Bold"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="VendasEstoque.EditarCliente">
+    <ContentPage.Content>
+        <StackLayout Padding="20" Spacing="20">
+            <Button x:Name="btnSalvar" Text="Salvar dados" Clicked="BtnSalvar_Clicked" BackgroundColor="#32CD32" HorizontalOptions="FillAndExpand"/>
+            <Label Text="Informações do cliente" FontSize="Medium" FontAttributes="Bold"/>
+            <Entry x:Name="entNomeCliente" Placeholder="Nome*" TextColor="White"/>
+            <Entry x:Name="entRSCliente" Placeholder="Razão Social*" TextColor="White"/>
+            <Label Text="Contatos" FontSize="Medium" FontAttributes="Bold"/>
+            <Entry x:Name="entTelCliente" Placeholder="Telefone*" TextColor="White"/>
+            <Entry x:Name="entCelCliente" Placeholder="Celular*" TextColor="White"/>
+            <Label Text="Endereço" FontSize="Medium" FontAttributes="Bold"/>
+            <Entry x:Name="entEndCliente" Placeholder="Endereço*" TextColor="White"/>
+            <Entry x:Name="entNumCasa" Placeholder="Número da casa*" TextColor="White"/>
+            <Entry x:Name="entBairro" Placeholder="Bairro*" TextColor="White"/>
+            <Entry x:Name="entCidadeCliente" Placeholder="Cidade*" TextColor="White"/>
+            <Entry x:Name="entEstadoCliente" Placeholder="Estado*" TextColor="White"/>
+            <Button x:Name="btnExcluir" Text="Apagar Cadastro" Clicked="BtnExcluir_Clicked" BackgroundColor="Red" HorizontalOptions="FillAndExpand"/>
+            <ListView x:Name="lvwListaCliente" BackgroundColor="White"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

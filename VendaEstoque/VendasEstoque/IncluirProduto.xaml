@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converterPack="clr-namespace:Xamarin.Forms.ConvertersPack;assembly=Xamarin.Forms.ConvertersPack"
+             mc:Ignorable="d"            
+             Title="Incluir novo produto"
+             x:Class="VendasEstoque.IncluirProduto">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry x:Name="entProd" Placeholder="Produto*"/>
+            <Entry x:Name="entQtde" Placeholder="Estoque*" Keyboard="Numeric"/>
+            <Entry x:Name="entRSCompra" Placeholder="Valor de Compra (R$)*" Keyboard="Numeric"/>
+            <Entry x:Name="entRSVenda" Placeholder="Valor de Venda (R$)*" Keyboard="Numeric"/>
+            <Entry x:Name="entEspecifica" Placeholder="Status"/>
+            <Button Text="SALVAR PRODUTO" x:Name="btnSalvarProd" Clicked="BtnSalvarProd_Clicked" HorizontalOptions="FillAndExpand" BackgroundColor="#32CD32"/>
+            <Button Text="Voltar" x:Name="btnVoltar3" Clicked="BtnVoltar_Clicked3" BackgroundColor="#32CD32" HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

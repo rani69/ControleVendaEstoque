@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             Title="Relação de Produtos"
+             mc:Ignorable="d"
+             x:Class="VendasEstoque.TelaProduto">
+    <!-- CONSULTAVAGAS-->
+    <StackLayout>
+        <StackLayout>
+            <Button Text="NOVO PRODUTO" Clicked="ToolbarCadastra_Clicked" BackgroundColor="#32CD32" HorizontalOptions="FillAndExpand"/>
+            <!--<Button x:Name="btnGoProdEstoque" Text="Estoque"/>-->
+            <!--Clicked="BtnGoProdEstoque_Clicked" /> -->
+        </StackLayout>
+        <Entry Placeholder="Pesquisar" TextChanged="PesquisarAction"/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="" x:Name="lblProdCount"/>
+            <Label Text="Produto(s) cadastrado(s)"/>
+        </StackLayout>
+        <ListView x:Name="ListaProdutos">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Column="0" Text="{Binding ProdNome}" FontAttributes="Bold">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" CommandParameter="{Binding .}"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <Label Grid.Column="1" Text="{Binding ProdQtde}" FontAttributes="Bold"/>
+                            <Label Grid.Column="2" Text="{Binding ProdRSCompra}" FontAttributes="Bold"/>
+                            <Label Grid.Column="3" Text="{Binding ProdRSVenda}" FontAttributes="Bold"/>
+                            <Label Grid.Column="4" Text="{Binding ProdStatus}" FontAttributes="Bold"/>
+                            <!--<Button Text="Detalhes" Clicked="Button_Clicked" Grid.Column="1"/> -->
+                            <!--<Label Text="DETALHES" Grid.Column="2">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" CommandParameter="{Binding .}"/>
+                                </Label.GestureRecognizers>
+                            </Label>-->
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Label x:Name="lblConfirma"/>
+        <Button x:Name="btnApagarTudo" Text="APAGAR TODOS OS PRODUTOS" HorizontalOptions="FillAndExpand" BackgroundColor="#B22222" Clicked="BtnApagarTudo_Clicked"/>
+    </StackLayout>
+</ContentPage>

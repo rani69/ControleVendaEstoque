@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "VendasEstoque": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Users\\josen\\Desktop\\Publicação",
+      "nativeDebugging": false
+    }
+  }
+}

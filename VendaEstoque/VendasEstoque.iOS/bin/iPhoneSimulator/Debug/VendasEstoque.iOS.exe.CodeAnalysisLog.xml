@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio2019\community\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="16.0">
+ <Targets>
+  <Target Name="C:\a-legendary-engine\VendasEstoque\VendasEstoque.iOS\bin\iPhoneSimulator\Debug\VendasEstoque.iOS.exe">
+   <Modules>
+    <Module Name="vendasestoque.ios.exe">
+     <Namespaces>
+      <Namespace Name="VendasEstoque.iOS">
+       <Types>
+        <Type Name="AppDelegate" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#FinishedLaunching(UIKit.UIApplication,Foundation.NSDictionary)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="TransparentMethodsMustNotReferenceCriticalCodeFxCopRule" Category="Microsoft.Security" CheckId="CA2140" Status="Active" Created="2019-09-29 23:23:38Z" FixCategory="DependsOnFix">
+             <Issue Name="MethodReference" Certainty="99" Level="CriticalError" Path="C:\a-legendary-engine\VendasEstoque\VendasEstoque.iOS" File="AppDelegate.cs" Line="21">Transparent method 'AppDelegate.FinishedLaunching(UIApplication, NSDictionary)' references security critical method 'Application.Application()'.  In order for this reference to be allowed under the security transparency rules, either 'AppDelegate.FinishedLaunching(UIApplication, NSDictionary)' must become security critical or safe-critical, or 'Application.Application()' become security safe-critical or transparent.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="VendasEstoque.iOS.Banco">
+       <Types>
+        <Type Name="Caminho" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="TypesMustBeAtLeastAsCriticalAsBaseTypesFxCopRule" Category="Microsoft.Security" CheckId="CA2146" Status="Active" Created="2019-09-29 23:23:38Z" FixCategory="DependsOnFix">
+           <Issue Name="DeriveFromCritical" Certainty="99" Level="CriticalError">Transparent or safe-critical type 'Caminho' derives from critical type 'ICaminho' in violation of the transparency inheritance rules.  'Caminho' must be critical to derive from a critical type or implement a critical interface.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#ObterCaminho(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="MethodsMustOverrideWithConsistentTransparencyFxCopRule" Category="Microsoft.Security" CheckId="CA2134" Status="Active" Created="2019-09-29 23:23:38Z" FixCategory="DependsOnFix">
+             <Issue Name="TransparentOverrideCritical" Certainty="99" Level="CriticalError" Path="C:\a-legendary-engine\VendasEstoque\VendasEstoque.iOS\Banco" File="Caminho.cs" Line="19">Transparent or safe critical method 'Caminho.ObterCaminho(string)' is overriding critical method 'ICaminho.ObterCaminho(string)' in violation of method override rules.  'Caminho.ObterCaminho(string)' must become security critical in order to override a critical virtual method or implement a critical interface method.</Issue>
+            </Message>
+            <Message TypeName="OverrideLinkDemandsShouldBeIdenticalToBase" Category="Microsoft.Security" CheckId="CA2123" Status="Active" Created="2019-09-29 23:23:38Z" FixCategory="Breaking">
+             <Issue Name="BaseOnly" Certainty="33" Level="CriticalError" Path="C:\a-legendary-engine\VendasEstoque\VendasEstoque.iOS\Banco" File="Caminho.cs" Line="19">Add the following security attribute to 'Caminho.ObterCaminho(string)' in order to match a LinkDemand on base method 'ICaminho.ObterCaminho(string)':  'SecurityCriticalAttribute'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="MethodsMustOverrideWithConsistentTransparencyFxCopRule" Category="Microsoft.Security" CheckId="CA2134">
+   <Name>Methods must keep consistent transparency when overriding base methods</Name>
+   <Description>Transparency visibility must be preserved between overriding methods and the methods that are being overridden.  If the virtual method being overridden or interface method being implemented is security safe-critical or security transparent, then the overriding method must also be either security safe-critical or security transparent.  Similarly, if the method being overridden is security critical, the overriding method must be security critical.</Description>
+   <Resolution Name="TransparentOverrideCritical">Transparent or safe critical method {0} is overriding critical method {1} in violation of method override rules.  {0} must become security critical in order to override a critical virtual method or implement a critical interface method.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/dd997447(VS.100).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="99">CriticalError</MessageLevel>
+   <File Name="securitytransparencyrules.dll" Version="4.0.0.0" />
+  </Rule>
+  <Rule TypeName="OverrideLinkDemandsShouldBeIdenticalToBase" Category="Microsoft.Security" CheckId="CA2123">
+   <Name>Override link demands should be identical to base</Name>
+   <Description>If a virtual method has a LinkDemand, in many cases, so should any override of it, and if an override has a LinkDemand, so should the overridden virtual method. Because it is possible to call any of the overrides of a virtual method explicitly, they should all have the same LinkDemand status or, if not, should be reviewed. This also applies to LinkDemand security checks for methods that part of an interface implementation, because the caller might use an interface-typed reference to access the method.</Description>
+   <Resolution Name="BaseOnly">Add the following security attribute to {0} in order to match a LinkDemand on base method {1}:  {2}.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182305(VS.100).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="33">CriticalError</MessageLevel>
+   <File Name="securitytransparencyrules.dll" Version="4.0.0.0" />
+  </Rule>
+  <Rule TypeName="TransparentMethodsMustNotReferenceCriticalCodeFxCopRule" Category="Microsoft.Security" CheckId="CA2140">
+   <Name>Transparent code must not reference security critical items</Name>
+   <Description>Transparent code cannot refer to security critical methods, types, or fields.  At runtime these references will result in MemberAccessExceptions or TypeLoadExceptions.</Description>
+   <Resolution Name="MethodReference">Transparent method {0} references security critical method {1}.  In order for this reference to be allowed under the security transparency rules, either {0} must become security critical or safe-critical, or {1} become security safe-critical or transparent.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/bb264475(VS.100).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="99">CriticalError</MessageLevel>
+   <File Name="securitytransparencyrules.dll" Version="4.0.0.0" />
+  </Rule>
+  <Rule TypeName="TypesMustBeAtLeastAsCriticalAsBaseTypesFxCopRule" Category="Microsoft.Security" CheckId="CA2146">
+   <Name>Types must be at least as critical as their base types and interfaces</Name>
+   <Description>While any type may derive from a transparent type or interface, restrictions apply as to the types that can inherit from or implement safe-critical or critical types.  Only safe-critical or critical types may derive from or implement safe-critical interfaces and base types.  Only critical types may derive from or implement critical interfaces and base types.</Description>
+   <Resolution Name="DeriveFromCritical">Transparent or safe-critical type {0} derives from critical type {1} in violation of the transparency inheritance rules.  {0} must be critical to derive from a critical type or implement a critical interface.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/dd997443(VS.100).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="99">CriticalError</MessageLevel>
+   <File Name="securitytransparencyrules.dll" Version="4.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Categoria</String>
+  <String Key="Certainty">Certeza</String>
+  <String Key="CollapseAll">Recolher Tudo</String>
+  <String Key="CheckId">Verificar ID</String>
+  <String Key="Error">Erro</String>
+  <String Key="Errors">erro(s)</String>
+  <String Key="ExpandAll">Expandir Tudo</String>
+  <String Key="Help">Ajuda</String>
+  <String Key="Line">Linha</String>
+  <String Key="Messages">mensagem(ns)</String>
+  <String Key="LocationNotStoredInPdb">[Local não armazenado em Pdb]</String>
+  <String Key="Project">Projeto</String>
+  <String Key="Resolution">Resolução</String>
+  <String Key="Rule">Regra</String>
+  <String Key="RuleFile">Arquivo de Regra</String>
+  <String Key="RuleDescription">Descrição da Regra</String>
+  <String Key="Source">Origem</String>
+  <String Key="Status">Status</String>
+  <String Key="Target">Destino</String>
+  <String Key="Warning">Aviso</String>
+  <String Key="Warnings">aviso(s)</String>
+  <String Key="ReportTitle">Relatório de Análise de Código</String>
+ </Localized>
+</FxCopReport>

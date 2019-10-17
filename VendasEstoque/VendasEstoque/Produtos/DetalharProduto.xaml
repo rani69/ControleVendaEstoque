@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="VendasEstoque.Produtos.DetalharProduto">
+    <ContentPage.Content>
+        <StackLayout>
+                <!-- DETALHE/EDITAR PRODUTO -->
+            <Button x:Name="btnSalvarProd" Text="SALVAR" Clicked="BtnSalvarProd_Clicked" BackgroundColor="ForestGreen"/>
+            <Entry x:Name="entProd" Placeholder="Produto*"/>
+            <Entry x:Name="entQtde" Placeholder="Quantidade*" Keyboard="Numeric"/>
+            <Entry x:Name="entRSCompra" Placeholder="Preço de Compra (R$)*" Keyboard="Numeric"/>
+            <Entry x:Name="entRSVenda" Placeholder="Preço de Venda (R$)*" Keyboard="Numeric"/>
+            <Entry x:Name="entStatus" Placeholder="Status"/>
+            <Label x:Name="lblConfirma"/>
+            <Button x:Name="btnExcluirProd" Text="EXCLUIR" Clicked="BtnExcluirProd_Clicked" BackgroundColor="Red"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

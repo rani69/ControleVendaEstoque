@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Relatório de Venda Realizada"
+             x:Class="VendasEstoque.Relatorios.RelatorioVenda">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+            </StackLayout>
+            <Label x:Name="lblDataVenda" Text="Data da venda:" FontSize="Medium" FontAttributes="Bold"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Produto:"/>
+                <Label x:Name="lblDesc" />
+            </StackLayout>
+            <!--"Descrição do Produto"/>-->
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Quantidade: "/>
+                <Label x:Name="lblQtde" Text=""/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Preço:"/>
+                <Label x:Name="lblRSVenda" Text=""/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Forma de Pagamento:"/>
+                <Label x:Name="lblForma" Text=""/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Cliente:"/>
+                <Label x:Name="lblCliente" Text=""/>
+            </StackLayout>
+            <StackLayout>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Label Text="Valor Total: R$"/>
+                <Label x:Name="lblValorTot" Text=""/>
+            </StackLayout>
+            <Label Text="Observações" FontSize="15"/>
+            <Label x:Name="lblObs" Text=""/>
+            <!--<Editor HeightRequest="100" x:Name="editObs"/>-->
+            <Label x:Name="lblVendaPaga" Text=""/>
+            <!--<StackLayout Orientation="Horizontal">
+                    <CheckBox x:Name="checkBox"/>
+                </StackLayout>-->
+            <StackLayout>
+                <Button Text="Sair" x:Name="btnVoltar" Clicked="BtnVoltar_Clicked" BackgroundColor="#32CD32" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

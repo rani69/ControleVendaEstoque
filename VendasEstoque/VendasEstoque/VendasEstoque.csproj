@@ -37,6 +37,9 @@
     <EmbeddedResource Update="Clientes\DetalhaCliente.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Produtos\BuscarProduto.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Produtos\DetalharProduto.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -74,6 +77,12 @@
 
   <ItemGroup>
     <Folder Include="arquivos\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Produtos\BuscarProduto.xaml.cs">
+      <DependentUpon>BuscarProduto.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

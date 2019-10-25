@@ -93,3 +93,4 @@ C:\ControleVendasEstoque\VendasEstoque\VendasEstoque\bin\Debug\netstandard2.0\Ve
 C:\ControleVendasEstoque\VendasEstoque\VendasEstoque\bin\Debug\netstandard2.0\ref\VendasEstoque.dll
 C:\ControleVendasEstoque\VendasEstoque\VendasEstoque\bin\Debug\netstandard2.0\VendasEstoque.pdb
 C:\ControleVendasEstoque\VendasEstoque\VendasEstoque\obj\Debug\netstandard2.0\XamlC.stamp
+C:\ControleVendasEstoque\VendasEstoque\VendasEstoque\obj\Debug\netstandard2.0\Produtos\BuscarProduto.xaml.g.cs

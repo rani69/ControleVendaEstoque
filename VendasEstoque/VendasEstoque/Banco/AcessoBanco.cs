@@ -1,10 +1,6 @@
 ﻿using System.Collections.Generic;
 using Xamarin.Forms;
 using SQLite;
-using System.Data.SqlTypes;
-using System;
-using System.Linq;
-using VendasEstoque;
 using VendasEstoque.Produtos;
 
 

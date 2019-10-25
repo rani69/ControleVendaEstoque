@@ -31,7 +31,6 @@ namespace VendasEstoque.Produtos
 
         }
 
-
         //Chama a página de detalhe pro produto selecionado pelo usuário
         public void TapGestureRecognizer_Tapped(object sender, EventArgs args)
         {

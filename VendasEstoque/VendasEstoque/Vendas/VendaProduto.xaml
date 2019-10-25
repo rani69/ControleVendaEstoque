@@ -9,25 +9,57 @@
              x:Class="VendasEstoque.Vendas.VendaProduto">
     <ContentPage.Content>
         <StackLayout>
-            <Entry x:Name="entDesc" Placeholder="Produto*"/>
-            <Entry x:Name="entQtde" Placeholder="Quantidade*" Keyboard="Numeric"  TextChanged="EntQtde_TextChanged"/>
+            <StackLayout>
+                <Label x:Name="lblProdNome"/>
+                <Picker
+                    x:Name="pickProduto"
+                    Title="Selecione o Produto"
+                    ItemsSource="{Binding ProdutoList}"
+                    ItemDisplayBinding="{Binding ProdNome}"
+                    SelectedItem="{Binding SelectedProduto}"/>
+                <!--  SelectedIndexChanged="PickProduto_SelectedIndexChanged"/> -->
+                <!--<Picker
+                    x:Name="pickProdQtde"
+                    Title="Quantidade"
+                    ItemsSource="{Binding ProdutoList}"
+                    ItemDisplayBinding="{Binding ProdQtde}"
+                    SelectedItem=""/>
+                <Label Text="" x:Name="entDesc"/>
+                <Picker
+                    x:Name="pickCliente"
+                    Title="Cliente"
+                    ItemsSource="{Binding ClienteList}"
+                    ItemDisplayBinding="{Binding ProdNome}"
+                    SelectedItem="{Binding SelectedCliente}"/> -->
+            </StackLayout>
+            <Entry x:Name="entQtde" Placeholder="Quantidade*" Keyboard="Numeric" TextChanged="EntQtde_TextChanged"/>
             <Entry x:Name="entRSVenda" Placeholder="Preço(R$)*" Keyboard= "Numeric" TextChanged="EntRSVenda_TextChanged"/>
             <Entry x:Name="entForma" Placeholder="Forma de Pagamento*"/>
             <Entry x:Name="entCliente" Placeholder="Cliente*" />
             <Label Text="Observações"/>
-            <Editor HeightRequest="100" x:Name="editObs"/>
+            <Editor HeightRequest="100"
+                        x:Name="editObs"/>
             <StackLayout Orientation="Horizontal">
                 <Label Text="Valor Total: R$"/>
-                <Label Text="" x:Name="lblValorTot"/>
+                <Label Text=""
+                           x:Name="lblValorTot"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
-                <Label Text="PAGO?" FontAttributes="Bold"/>
+                <Label Text="PAGO?" 
+                           FontAttributes="Bold"/>
                 <CheckBox x:Name="checkBoxPG"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
-                <Button Text="Vender" x:Name="btnVenda" Clicked="BtnVenda_Clicked" HorizontalOptions="FillAndExpand" BackgroundColor="#32CD32"/>
+                <Button Text="Vender"
+                            x:Name="btnVenda" 
+                            Clicked="BtnVenda_Clicked" 
+                            HorizontalOptions="FillAndExpand"
+                            BackgroundColor="#32CD32"/>
             </StackLayout>
-            <Label Text="" x:Name="lblData" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold"/>
+            <Label Text="" x:Name="lblData"
+                       HorizontalOptions="Center" 
+                       FontSize="Medium"
+                       FontAttributes="Bold"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

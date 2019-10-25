@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using VendasEstoque.Banco;
 using VendasEstoque.Produtos;
+using SQLite;
 
 namespace VendasEstoque.Vendas
 {
@@ -21,12 +22,32 @@ namespace VendasEstoque.Vendas
             InitializeComponent();
             DateTime dateAndTime = DateTime.Now;
             lblData.Text += dateAndTime.ToString("dd/MM/yyyy");
-            if(vendas.VendaId == 0)
+            if (vendas.VendaId == 0)
             {
                 vendas.VendaId = 1;
             }
             vendas.VendaId += 1;
+            this.BindingContext = new ProdModel
+            {
+                ProdutoList = GetProdInfo()
+
+            };
+
         }
+        private SQLiteConnection _conexao;
+        // Picker de Produtos
+        private List<Produto> GetProdInfo()
+        {
+            var dep = DependencyService.Get<ICaminho>();
+            string caminho = dep.ObterCaminho("database.sqlite");
+
+            _conexao = new SQLiteConnection(caminho);
+
+            var db = _conexao.Table<Produto>();
+            return db.ToList();
+
+        }
+        // Picker de Clientes
 
         private void EntQtde_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -46,8 +67,6 @@ namespace VendasEstoque.Vendas
                 {
                     DisplayAlert("Erro", "Quantidade/Valor unitário inválido!", "OK");
                 }
-
-
             }
         }
 
@@ -80,7 +99,7 @@ namespace VendasEstoque.Vendas
             int HaveResult = produto[0].ProdEstoque;
             var qtdeVenda = int.Parse(entQtde.Text);
 
-            if (entCliente.Text == null || entDesc.Text == null || entQtde.Text == null || int.Parse(entQtde.Text) < 1 || entRSVenda.Text == null || entForma == null)
+            if (entCliente.Text == null ||  entQtde.Text == null || int.Parse(entQtde.Text) < 1 || entRSVenda.Text == null || entForma == null)
             {
                 DisplayAlert("AVISO", "Preencha todos os campos obrigatórios.", "OK");
             }
@@ -90,19 +109,19 @@ namespace VendasEstoque.Vendas
                 {
                     produto[0].ProdEstoque -= qtdeVenda;
                     AcessoBanco acessobanco = new AcessoBanco();
-                    var listaProd = acessobanco.PesquisarProdNome(entDesc.Text);
+                    var listaProd = acessobanco.PesquisarProdNome(lblProdNome.Text);
                     if (listaProd.Count() <= 0)
                     {
                         DisplayAlert("Produto não cadastrado", "Favor checar o estoque", "OK");
                     }
                     else
-                    {   //TODO - Checar se o cliente está cadastrado
-                        //var listaCli = acessobanco.PesquisarNome(entCliente.Text.ToLower());
-                        /*if(listaCli.Count() <= 0){
-                        DisplayAlert("Cliente não Cadastrado", "Cheque os clientes cadastrados", "OK");*/
+                    {   //TODO - Checar se o clIente está cadaStrAdo
+                        //var lIstaCli = acessobanco.PesquisarNome(entCliente.Text.ToLower());
+                        /*if(liStaCli.Count() <= 0){
+                        DisplayAlert("Cliente não CAdastrado", "Cheque os clientes cadastrados", "OK");*/
 
                         venda.CliNome = entCliente.Text.ToLower();
-                        venda.ProdNome = entDesc.Text.ToLower();
+                        venda.ProdNome = lblProdNome.Text.ToLower();
                         venda.ProdQtde = int.Parse(entQtde.Text.ToLower());
                         venda.ProdRSVenda = decimal.Parse(entRSVenda.Text);
                         venda.FormaPagmento = entForma.Text.ToLower();
@@ -150,6 +169,12 @@ namespace VendasEstoque.Vendas
         private void BtnEditarVenda_Clicked(object sender, EventArgs e)
         {
            Navigation.PushModalAsync(new EditarVenda(vendas));
+        }
+
+        private void BtnBuscaProd_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new BuscarProduto());
+
         }
     }
     /* private Produto produto { get; set; }
